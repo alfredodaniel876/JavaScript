@@ -29,7 +29,7 @@
 		var docXML = xml.responseXML;
 		var tabla = "<tr><th>Artistas</th></tr>";
 		var discos = docXML.getElementsByTagName("CD");
-		for(var i = 0; i<dicos.length; i++) {
+		for(var i = 0; i<discos.length; i++) {
 			tabla += "<tr><td>";
 			tabla += discos[i].getElementsByTagName("ARTIST")[0].textContent;
 			tabla += "</td><td>";
