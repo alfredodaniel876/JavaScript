@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"/>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<div id="texto">
+	<h1>Colección de CDs</h1>
+	<button id="cargaCatalogo">Carga catálogo</button>
+</div>
+<table id="demo"></table>
+
+<script type="text/javascript">
+	document.getElementById("cargaCatalogo").addEventListener("click", cargaCatalogo);
+	function cargaCatalogo() {
+		var xhr = new XMLHttpRequest();
+
+		
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState==4 && xhr.status==200) {
+				if(xhr.status==200) {
+					console.log(xhr.responseText);
+				}else console.log("Error");
+				
+				//cargarXML(this);
+			}
+		};
+
+		xhr.open("GET", "catalogo.xml", true);
+		xhr.send();/*
+	}
+	
+	function cargarXML(xml) {
+		var docXML = xml.responseXML;
+		var tabla = "<tr><th>Artistas</th></tr>";
+		var discos = docXML.getElementsByTagName("CD");
+		for(var i = 0; i<dicos.length; i++) {
+			tabla += "<tr><td>";
+			tabla += discos[i].getElementsByTagName("ARTIST")[0].textContent;
+			tabla += "</td><td>";
+			tabla += discos[i].getElementsByTagName("TITLE")[0].textContent;
+			tabla += "</td></tr>";
+		}
+		document.getElementById("demo").innerHTML = tabla;*/
+	}
+</script>
+</body>
+</html>
