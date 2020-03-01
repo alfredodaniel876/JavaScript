@@ -17,17 +17,17 @@
 
 		
 		xhr.onreadystatechange = function() {
-			if(xhr.readyState==4 && xhr.status==200) {
+			if(this.readyState==4 && this.status==200) {
 				if(xhr.status==200) {
 					console.log(xhr.responseText);
 				}else console.log("Error");
 				
-				//cargarXML(this);
+				cargarXML(this);
 			}
 		};
 
 		xhr.open("GET", "catalogo.xml", true);
-		xhr.send();/*
+		xhr.send();
 	}
 	
 	function cargarXML(xml) {
@@ -41,7 +41,7 @@
 			tabla += discos[i].getElementsByTagName("TITLE")[0].textContent;
 			tabla += "</td></tr>";
 		}
-		document.getElementById("demo").innerHTML = tabla;*/
+		document.getElementById("demo").innerHTML = tabla;
 	}
 </script>
 </body>
