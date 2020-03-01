@@ -26,6 +26,7 @@
 	}
 	
 	function cargarXML(xml) {
+		var docXML = xml.responseXML;
 		var contenido = docXML.getElementsByTagName("CONTENIDO");
 		document.getElementById("demo").innerHTML = contenido;
 	}
