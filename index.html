@@ -4,45 +4,31 @@
 <title>Page Title</title>
 </head>
 <body>
-<div id="texto">
-	<h1>Colección de CDs</h1>
-	<button id="cargaCatalogo">Carga catálogo</button>
-</div>
-<table id="demo"></table>
+<h1>Ejercicio 4</h1>
+<button onclick="ajax_get_json()">Mostrar Datos</button>
+
+<div id="info"></div></div>
 
 <script type="text/javascript">
-	document.getElementById("cargaCatalogo").addEventListener("click", cargaCatalogo);
-	function cargaCatalogo() {
-		var xhr = new XMLHttpRequest();
-		
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState==4 && xhr.status==200) {
-				cargarXML(xhr);
-			}
-		};
+	function ajax_get_json() {
+		var xmlhttp;
 
-		xhr.open("GET", "ejemploXML.xml", true);
-		xhr.send();
-	}
-	
-	function cargarXML(xml) {
-		var docXML = xml.responseXML;
-		var contenido = docXML.getElementsByTagName("CONTENIDO");
-		document.getElementById("demo").innerHTML = contenido[0].textContent;
-	}
-	/*function cargarXML(xml) {
-		var docXML = xml.responseXML;
-		var tabla = "<tr><th>Artistas</th></tr>";
-		var discos = docXML.getElementsByTagName("CD");
-		for(var i = 0; i<discos.length; i++) {
-			tabla += "<tr><td>";
-			tabla += discos[i].getElementsByTagName("ARTIST")[0].textContent;
-			tabla += "</td><td>";
-			tabla += discos[i].getElementsByTagName("TITLE")[0].textContent;
-			tabla += "</td></tr>";
+		if(window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		}else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		document.getElementById("demo").innerHTML = tabla;
-	}*/
+
+		xmlhttp.onreadystatechange = function() {
+			if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				var datos = JSON.parse(xmlhttp.responseText);
+				console.log(datos);
+			}
+		}
+
+		xmlhttp.open("GET", "datos.json", true);
+		
+	}
 </script>
 </body>
 </html>
