@@ -4,10 +4,8 @@
 <title>Page Title</title>
 </head>
 <body>
-<h1>Ejercicio 4</h1>
-<button onclick="ajax_get_json()">Mostrar Datos</button>
-
-<div id="info"></div>
+<h1>Ejercicio 5</h1>
+<button onclick="ajax_get_json()">Transformar Datos</button>
 
 <script type="text/javascript">
 	var resultado = document.getElementById("info");
@@ -23,13 +21,10 @@
 
 		xmlhttp.onreadystatechange = function() {
 			if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var datos = JSON.parse(xmlhttp.responseText);
-				//console.log(datos);
-				if(resultado.innerHTML === "") {
-					for(var i in datos) {
-						resultado.innerHTML += i + ": " + datos[i] + "<br/>";
-					}
-				}
+				var datosJSON = JSON.parse(xmlhttp.responseText);
+				var datosString = JSON.stringify(datosJSON);
+				console.log(datosJSON);
+				console.log(datosString);
 			}
 		}
 
