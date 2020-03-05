@@ -4,33 +4,16 @@
 <title>Page Title</title>
 </head>
 <body>
-<h1>Ejercicio 5</h1>
-<button onclick="ajax_get_json()">Transformar Datos</button>
+	<script src="jquery-3.4.1.min.js"></script>
+	<h1 class="container">Ejercicio 5</h1>
+	<button onclick="ajax_get_json()">Transformar Datos</button>
 
-<script type="text/javascript">
-	var resultado = document.getElementById("info");
 
-	function ajax_get_json() {
-		var xmlhttp;
+	<script>
+		$(document).ready(function() {
+			$('.container').text('hola');
+		});
+	</script>
 
-		if(window.XMLHttpRequest) {
-			xmlhttp = new XMLHttpRequest();
-		}else {
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.onreadystatechange = function() {
-			if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var datosJSON = JSON.parse(xmlhttp.responseText);
-				var datosString = JSON.stringify(datosJSON);
-				console.log(datosJSON);
-				console.log(datosString);
-			}
-		}
-
-		xmlhttp.open("GET", "ejemploJSON.json", true);
-		xmlhttp.send();
-	}
-</script>
 </body>
 </html>
